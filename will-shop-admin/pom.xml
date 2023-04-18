@@ -31,6 +31,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-commons</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.will.shop</groupId>
+            <artifactId>will-shop-security-admin</artifactId>
+            <version>${will.shop.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

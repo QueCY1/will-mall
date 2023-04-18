@@ -13,6 +13,7 @@
         <module>will-shop-admin</module>
         <module>will-shop-bean</module>
         <module>will-shop-common</module>
+        <module>will-shop-security</module>
     </modules>
 
     <properties>
