@@ -37,6 +37,7 @@
         <knife4j.version>4.0.0</knife4j.version>
         <xxl-job.version>2.3.1</xxl-job.version>
         <spring-cloud-commons.version>4.0.1</spring-cloud-commons.version>
+        <captcha.version>1.3.0</captcha.version>
     </properties>
 
     <dependencyManagement>
@@ -74,6 +75,11 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.anji-plus</groupId>
+                <artifactId>spring-boot-starter-captcha</artifactId>
+                <version>${captcha.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.qiniu</groupId>

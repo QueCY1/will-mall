@@ -36,6 +36,11 @@
             <artifactId>will-shop-security-admin</artifactId>
             <version>${will.shop.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.will.shop</groupId>
+            <artifactId>will-shop-common</artifactId>
+            <version>${will.shop.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
