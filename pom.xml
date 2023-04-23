@@ -14,6 +14,8 @@
         <module>will-shop-bean</module>
         <module>will-shop-common</module>
         <module>will-shop-security</module>
+        <module>will-shop-system</module>
+        <module>will-shop-service</module>
     </modules>
 
     <properties>

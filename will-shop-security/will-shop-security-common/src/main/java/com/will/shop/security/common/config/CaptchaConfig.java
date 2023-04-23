@@ -17,6 +17,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * 滑动验证码配置类注入容器
+ * @author will
+ */
 @Configuration
 public class CaptchaConfig {
 
@@ -24,7 +28,7 @@ public class CaptchaConfig {
     public CaptchaService captchaService() {
         Properties config = new Properties();
         config.put(Const.CAPTCHA_CACHETYPE, "redis");
-        config.put(Const.CAPTCHA_WATER_MARK, "");
+        config.put(Const.CAPTCHA_WATER_MARK, "will");
         // 滑动验证
         config.put(Const.CAPTCHA_TYPE, CaptchaTypeEnum.BLOCKPUZZLE.getCodeValue());
         config.put(Const.CAPTCHA_INIT_ORIGINAL, "true");
@@ -42,20 +46,15 @@ public class CaptchaConfig {
 
         try {
             Resource[] resources = resolver.getResources(path);
-            Resource[] var4 = resources;
-            int var5 = resources.length;
-
-            for(int var6 = 0; var6 < var5; ++var6) {
-                Resource resource = var4[var6];
+            for (Resource resource : resources) {
                 byte[] bytes = FileCopyUtils.copyToByteArray(resource.getInputStream());
                 String string = Base64Utils.encodeToString(bytes);
                 String filename = resource.getFilename();
                 imgMap.put(filename, string);
             }
-        } catch (Exception var11) {
-            var11.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
         return imgMap;
     }
 }

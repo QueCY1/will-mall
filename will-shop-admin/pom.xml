@@ -38,7 +38,12 @@
         </dependency>
         <dependency>
             <groupId>com.will.shop</groupId>
-            <artifactId>will-shop-common</artifactId>
+            <artifactId>will-shop-service</artifactId>
+            <version>${will.shop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.will.shop</groupId>
+            <artifactId>will-shop-system</artifactId>
             <version>${will.shop.version}</version>
         </dependency>
     </dependencies>

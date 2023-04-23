@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.will.shop</groupId>
-        <artifactId>will-shop-security</artifactId>
+        <artifactId>will-shop</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>will-shop-security-common</artifactId>
+    <artifactId>will-shop-system</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -20,17 +20,8 @@
     <dependencies>
         <dependency>
             <groupId>com.will.shop</groupId>
-            <artifactId>will-shop-service</artifactId>
+            <artifactId>will-shop-security-admin</artifactId>
             <version>${will.shop.version}</version>
-        </dependency>
-        <!--security-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.anji-plus</groupId>
-            <artifactId>spring-boot-starter-captcha</artifactId>
         </dependency>
     </dependencies>
 
