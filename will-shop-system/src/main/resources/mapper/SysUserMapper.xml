@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.will.shop.sys.dao.SysUserMapper">
+
+    <!-- List<String> queryAllPerms(@Param("userId") Long userId); -->
+    <!-- 查看用户的所有权限 -->
+    <select id="queryAllPerms" resultType="string">
+        select m.perms from tz_sys_user_role ur
+        LEFT JOIN tz_sys_role_menu rm on ur.role_id = rm.role_id
+        LEFT JOIN tz_sys_menu m on rm.menu_id = m.menu_id
+        where ur.user_id = #{userId}
+    </select>
+
+    <!-- void deleteBatch(@Param("userIds") Long[] userIds, @Param("shopId") Long shopId); -->
+    <!-- 根据用户id 批量删除用户 -->
+    <delete id="deleteBatch">
+        delete u, r from tz_sys_user u
+        LEFT JOIN tz_sys_user_role r on u.user_id = r.user_id
+        where u.user_id in
+        <foreach collection="userIds" item="userId" separator="," open="(" close=")">
+            #{userId}
+        </foreach>
+        and u.shop_id = #{shopId}
+    </delete>
+
+    <!-- SysUser selectByUsername(@Param("username") String username); -->
+    <!-- 根据用户名获取管理员用户 -->
+    <select id="selectByUsername" resultType="com.will.shop.sys.model.SysUser">
+        select * from tz_sys_user where username = #{username}
+    </select>
+
+</mapper>
