@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.will.shop.sys.dao.SysUserRoleMapper">
+    <!-- int deleteBatchByRoleId(@Param("roleIds") Long[] roleIds); -->
+    <!-- 根据角色ID数组，批量删除 -->
+    <delete id="deleteBatchByRoleId">
+        delete from tz_sys_user_role where role_id in
+        <foreach collection="roleIds" item="roleId" separator="," open="(" close=")">
+            #{roleId}
+        </foreach>
+    </delete>
+
+    <!-- void deleteBatchByUserId(@Param("userIds") Long[] userIds); -->
+    <!-- 根据用户ID数组，批量删除 -->
+    <delete id="deleteBatchByUserId">
+        delete from tz_sys_user_role where user_id in
+        <foreach collection="userIds" item="userId" separator="," open="(" close=")">
+            #{userId}
+        </foreach>
+    </delete>
+
+    <!-- void deleteByUserId(Long userId); -->
+    <!-- 根据用户id删除用户与角色关系 -->
+    <delete id="deleteByUserId">
+        delete from tz_sys_user_role where user_id = #{userId}
+    </delete>
+
+    <!-- void insertUserAndUserRole(@Param("userId") Long userId, @Param("roleIdList") List<Long> roleIdList); -->
+    <!-- 根据用户id 批量添加用户角色关系 -->
+    <insert id="insertUserAndUserRole">
+        insert into tz_sys_user_role (user_id, role_id) values
+        <foreach collection="roleIdList" item="roleId" separator=",">
+            (#{userId},#{roleId})
+        </foreach>
+    </insert>
+</mapper>

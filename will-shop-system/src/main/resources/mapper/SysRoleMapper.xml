@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.shop.sys.dao.SysRoleMapper">
+    <!-- void deleteBatch(@Param("roleIds") Long[] roleIds); -->
+    <!-- 根据角色id批量删除：比如把所有管理员删除 -->
+    <delete id="deleteBatch">
+        delete from tz_sys_role where role_id in
+        <foreach collection="roleIds" item="roleId" separator="," open="(" close=")">
+            #{roleId}
+        </foreach>
+    </delete>
+
+    <!-- List<Long> listRoleIdByUserId(Long userId); -->
+    <!-- 根据用户ID，获取角色ID列表，一个用户对应多个角色，每个角色对应了不同的权限 -->
+    <select id="listRoleIdByUserId" resultType="Long">
+        select role_id from tz_sys_user_role where user_id = #{userId}
+    </select>
+</mapper>

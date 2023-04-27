@@ -15,13 +15,12 @@
     <!-- void deleteBatch(@Param("userIds") Long[] userIds, @Param("shopId") Long shopId); -->
     <!-- 根据用户id 批量删除用户 -->
     <delete id="deleteBatch">
-        delete u, r from tz_sys_user u
-        LEFT JOIN tz_sys_user_role r on u.user_id = r.user_id
-        where u.user_id in
-        <foreach collection="userIds" item="userId" separator="," open="(" close=")">
+        delete from tz_sys_user where user_id in
+        <foreach collection="userIds" item="userId" index="no" open="("
+                 separator="," close=")">
             #{userId}
         </foreach>
-        and u.shop_id = #{shopId}
+        and shop_id = #{shopId}
     </delete>
 
     <!-- SysUser selectByUsername(@Param("username") String username); -->
