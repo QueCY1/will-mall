@@ -6,7 +6,7 @@ import com.will.shop.sys.dao.SysUserMapper;
 import com.will.shop.sys.dao.SysUserRoleMapper;
 import com.will.shop.sys.model.SysUser;
 import com.will.shop.sys.service.SysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,13 +14,12 @@ import java.util.Date;
 import java.util.List;
 
 @Service("sysUserService")
+@RequiredArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
-    @Autowired
-    private SysUserMapper sysUserMapper;
+    private final SysUserMapper sysUserMapper;
 
-    @Autowired
-    private SysUserRoleMapper sysUserRoleMapper;
+    private final SysUserRoleMapper sysUserRoleMapper;
 
     @Override
     public void updatePasswordByUserId(Long userId, String newPassword) {
