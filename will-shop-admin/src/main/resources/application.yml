@@ -20,11 +20,11 @@ spring:
       database: 0
 #logging:
 #  config: classpath:logback/logback-dev.xml
-xxl-job:
-  accessToken: default_token
-  logPath: /data/applogs/xxl-job/jobhandler
-  admin:
-    addresses: http://localhost:8080/xxl-job-admin
+#xxl-job:
+#  accessToken: default_token
+#  logPath: /data/applogs/xxl-job/jobhandler
+#  admin:
+#    addresses: http://localhost:8080/xxl-job-admin
 
 # mybaits-plus配置
 mybatis-plus:

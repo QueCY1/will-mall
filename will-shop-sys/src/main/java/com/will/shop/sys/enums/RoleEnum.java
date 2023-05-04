@@ -5,17 +5,17 @@ public enum RoleEnum {
     /**
      * 超级管理员：最高权限
      */
-    SUPER_ADMIN(0),
+    SUPER_ADMIN(1),
 
     /**
      * 普通管理员
      */
-    ADMIN(1),
+    ADMIN(2),
 
     /**
      * 后台员工
      */
-    GUEST(2);
+    GUEST(3);
 
     private final int value;
 

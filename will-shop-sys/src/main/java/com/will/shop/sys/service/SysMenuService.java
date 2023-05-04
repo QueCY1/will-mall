@@ -8,7 +8,7 @@ import java.util.List;
 public interface SysMenuService extends IService<SysMenu> {
 
     /**
-     * 获取用户菜单列表
+     * 获取用户菜单列表(左侧能显示出来的)
      * @param userId 用户id
      * @return 菜单列表
      */
