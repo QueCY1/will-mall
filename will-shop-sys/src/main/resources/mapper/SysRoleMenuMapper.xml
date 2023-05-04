@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.shop.sys.dao.SysRoleMenuMapper">
+    <!-- int deleteBatch(Long[] roleIds); -->
+    <!-- 根据角色ID数组，批量删除 -->
+    <delete id="deleteBatch">
+        delete from tz_sys_role_menu where role_id in
+        <foreach item="roleId" collection="roleIds" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+    </delete>
+
+    <!-- void deleteByMenuId(@Param("menuId") Long menuId); -->
+    <!-- 根据菜单id 删除菜单关联角色信息 -->
+    <delete id="deleteByMenuId">
+        delete from tz_sys_role_menu where menu_id = #{menuId}
+    </delete>
+
+    <!-- void insertRoleAndRoleMenu(@Param("roleId") Long roleId, @Param("menuIdList") List<Long> menuIdList); -->
+    <!-- 根据角色id 批量添加角色与菜单关系 -->
+    <insert id="insertRoleAndRoleMenu">
+        insert into tz_sys_role_menu (role_id, menu_id) values
+        <foreach item="menuId" collection="menuIdList" separator=",">
+            (#{roleId},#{menuId})
+        </foreach>
+    </insert>
+</mapper>

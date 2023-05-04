@@ -19,9 +19,24 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.will.shop</groupId>
+            <artifactId>will-shop-service</artifactId>
+            <version>${will.shop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.will.shop</groupId>
+            <artifactId>will-shop-sys</artifactId>
+            <version>${will.shop.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.will.shop</groupId>
+            <artifactId>will-shop-security-admin</artifactId>
+            <version>${will.shop.version}</version>
         </dependency>
         <dependency>
             <groupId>com.xuxueli</groupId>
@@ -30,21 +45,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.will.shop</groupId>
-            <artifactId>will-shop-security-admin</artifactId>
-            <version>${will.shop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.will.shop</groupId>
-            <artifactId>will-shop-service</artifactId>
-            <version>${will.shop.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.will.shop</groupId>
-            <artifactId>will-shop-system</artifactId>
-            <version>${will.shop.version}</version>
         </dependency>
     </dependencies>
 

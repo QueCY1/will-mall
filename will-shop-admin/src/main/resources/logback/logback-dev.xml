@@ -7,7 +7,7 @@
         <appender-ref ref="CONSOLE" />
     </root>
 
-    <logger name="com.yami.shop" level="debug"/>
+    <logger name="com.will.shop" level="debug"/>
     <logger name="springfox.documentation.swagger2" level="off"/>
     <logger name="io.swagger.models.parameters" level="off"/>
     <logger name="springfox.documentation.swagger.readers.operation.OperationImplicitParameterReader" level="off"/>

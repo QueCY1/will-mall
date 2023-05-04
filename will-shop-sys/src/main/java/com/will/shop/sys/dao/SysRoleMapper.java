@@ -2,12 +2,10 @@ package com.will.shop.sys.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.will.shop.sys.model.SysRole;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
     /**
@@ -21,5 +19,5 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      * @param userId 用户id
      * @return 角色id列表
      */
-    List<Long> listRoleIdByUserId(Long userId);
+    List<Long> listRoleIdByUserId(@Param("userId") Long userId);
 }
