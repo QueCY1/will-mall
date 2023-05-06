@@ -4,10 +4,11 @@ import java.util.List;
 
 /**
  * 实现该接口之后，修改需要授权登陆的路径，不需要授权登陆的路径
- * @author 菠萝凤梨
- * @date 2022/3/25 17:31
+ * @author will
+ * @date 2022/05/06
  */
 public interface AuthConfigAdapter {
+
     /**
      * 也许需要登录才可用的url
      */
@@ -24,4 +25,5 @@ public interface AuthConfigAdapter {
      * @return 不需要授权登陆的路径列表
      */
     List<String> excludePathPatterns();
+
 }

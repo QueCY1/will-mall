@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author 菠萝凤梨
- * @date 2022/3/25 17:33
+ * @author will
+ * @date 2022/05/06
  */
 public class DefaultAuthConfigAdapter implements AuthConfigAdapter {
     private static final Logger logger = LoggerFactory.getLogger(DefaultAuthConfigAdapter.class);

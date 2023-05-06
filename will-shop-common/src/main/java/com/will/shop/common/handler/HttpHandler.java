@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.will.shop.common.exception.WillShopBindException;
 import com.will.shop.common.response.ServerResponseEntity;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,16 @@ import java.io.PrintWriter;
 import java.util.Objects;
 
 /**
- * @author 菠萝凤梨
- * @date 2022/3/28 14:15
+ * @author will
+ * @date 2022/05/06
  */
 @Component
+@RequiredArgsConstructor
 public class HttpHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpHandler.class);
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     public <T> void printServerResponseToWeb(ServerResponseEntity<T> serverResponseEntity) {
         if (serverResponseEntity == null) {
@@ -35,8 +36,7 @@ public class HttpHandler {
             return;
         }
 
-        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder
-                .getRequestAttributes();
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (requestAttributes == null) {
             logger.error("requestAttributes is null, can not print to web");
             return;
@@ -47,14 +47,14 @@ public class HttpHandler {
             return;
         }
         logger.error("response error: " + serverResponseEntity.getMsg());
+        //不经过DispatcherServlet，需要手动设置一下response.setCharacterEncoding和response.setContentType
         response.setCharacterEncoding(CharsetUtil.UTF_8);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         PrintWriter printWriter = null;
         try {
             printWriter = response.getWriter();
             printWriter.write(objectMapper.writeValueAsString(serverResponseEntity));
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new WillShopBindException("io 异常", e);
         }
     }

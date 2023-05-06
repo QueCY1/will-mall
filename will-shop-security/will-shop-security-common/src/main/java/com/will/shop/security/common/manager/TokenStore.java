@@ -152,7 +152,7 @@ public class TokenStore {
      */
     public UserInfoInTokenBO getUserInfoByAccessToken(String accessToken, boolean needDecrypt) {
         if (StrUtil.isBlank(accessToken)) {
-            throw new WillShopBindException(ResponseEnum.UNAUTHORIZED, "accessToken is blank");
+            throw new WillShopBindException(ResponseEnum.UNAUTHORIZED, "accessToken 为空");
         }
         String realAccessToken;
         if (needDecrypt) {
@@ -172,8 +172,8 @@ public class TokenStore {
     /**
      * 刷新token，并返回新的token
      *
-     * @param refreshToken
-     * @return
+     * @param refreshToken 刷新token
+     * @return 返回新的token
      */
     public TokenInfoBO refreshToken(String refreshToken) {
         if (StrUtil.isBlank(refreshToken)) {
