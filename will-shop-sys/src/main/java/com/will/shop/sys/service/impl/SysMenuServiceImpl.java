@@ -31,7 +31,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         //根据用户的角色，来优化返回的速度
         List<SysMenu> sysMenus;
         //超级管理员
-        if (userId == ADMIN.getValue()) {
+        if (userId == ADMIN.value()) {
             sysMenus = sysMenuMapper.listMenu();
         } else {
             sysMenus = sysMenuMapper.listMenuByUserId(userId);
