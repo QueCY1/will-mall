@@ -18,6 +18,7 @@ import com.will.shop.sys.model.SysUser;
 import com.will.shop.sys.service.SysRoleService;
 import com.will.shop.sys.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,6 +30,7 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping("/sys/user")
+@Tag(name = "管理员列表处理器")
 @RequiredArgsConstructor
 public class SysUserController {
 
