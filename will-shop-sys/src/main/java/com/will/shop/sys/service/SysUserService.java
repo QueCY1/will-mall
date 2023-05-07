@@ -38,7 +38,7 @@ public interface SysUserService extends IService<SysUser> {
      * 根据用户id 批量删除用户
      *
      * @param userIds 多个用户id
-     * @param shopId  某商铺id，这个目前来看不必要这个参数
+     * @param shopId  某商铺id
      */
     void deleteBatch(Long[] userIds, Long shopId);
 

@@ -18,8 +18,10 @@ spring:
       host: 127.0.0.1
       port: 6379
       database: 0
-#logging:
-#  config: classpath:logback/logback-dev.xml
+logging:
+  config: classpath:logback/logback-dev.xml
+  level:
+    web: debug
 #xxl-job:
 #  accessToken: default_token
 #  logPath: /data/applogs/xxl-job/jobhandler
