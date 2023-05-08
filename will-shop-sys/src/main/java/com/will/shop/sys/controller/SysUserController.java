@@ -121,6 +121,26 @@ public class SysUserController {
     }
 
     /**
+     * 保存用户
+     */
+    @SysLog("保存用户")
+    @PostMapping
+    @Operation(summary = "保存某用户信息", description = "新增某个用户信息")
+    @PreAuthorize("@pm.hasPermission('sys:user:save')")
+    public ServerResponseEntity<String> save(@Valid @RequestBody SysUser user) {
+        String username = user.getUsername();
+        SysUser dbUser = sysUserService.getOne(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getUsername, username));
+        if (dbUser != null) {
+            return ServerResponseEntity.showFailMsg("该用户已存在");
+        }
+        user.setShopId(SecurityUtils.getSysUser().getShopId());
+        user.setPassword(passwordEncoder.encode(passwordManager.decryptPassword(user.getPassword())));
+        sysUserService.saveUserAndUserRole(user);
+        return ServerResponseEntity.success();
+    }
+
+    /**
      * 修改用户
      */
     @SysLog("修改用户")
