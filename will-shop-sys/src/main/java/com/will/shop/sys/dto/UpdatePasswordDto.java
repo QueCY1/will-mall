@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @Data
 @Schema(description = "更新密码参数")
-public class UpdatePasswordDTO {
+public class UpdatePasswordDto {
 
     @NotBlank(message = "旧密码不能为空")
     @Size(max = 50)

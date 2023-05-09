@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.bean.model;
 
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -16,8 +6,10 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
- * @author lanhai
+ * 用户的订单地址
+ * @author will
  */
 @Data
 @TableName("tz_user_addr_order")
@@ -26,8 +18,6 @@ public class UserAddrOrder implements Serializable {
      * ID
      */
     @TableId
-
-
     private Long addrOrderId;
 
     /**
@@ -52,13 +42,13 @@ public class UserAddrOrder implements Serializable {
      */
 
     private String province;
-    
+
     /**
      * 城市
      */
 
     private String city;
-    
+
     /**
      * 区
      */
@@ -81,13 +71,13 @@ public class UserAddrOrder implements Serializable {
      */
 
     private Long provinceId;
-    
+
     /**
      * 城市ID
      */
 
     private Long cityId;
-    
+
     /**
      * 区域ID
      */

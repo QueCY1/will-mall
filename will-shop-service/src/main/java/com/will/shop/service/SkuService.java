@@ -1,0 +1,34 @@
+package com.will.shop.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.will.shop.bean.model.Sku;
+
+import java.util.List;
+
+/**
+ *
+ * @author will
+ */
+public interface SkuService extends IService<Sku> {
+
+	/**
+	 * 根据商品id获取商品中的sku列表（将会被缓存起来）
+	 * @param prodId 商品id
+	 * @return sku列表
+	 */
+	List<Sku> listByProdId(Long prodId);
+
+	/**
+	 * 根据skuId获取sku信息（将会被缓存起来）
+	 * @param skuId
+	 * @return
+	 */
+	Sku getSkuBySkuId(Long skuId);
+
+	/**
+	 * 根据商品id和skuId删除缓存
+	 * @param skuId
+	 * @param prodId
+	 */
+	void removeSkuCacheBySkuId(Long skuId,Long prodId);
+}

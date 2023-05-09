@@ -1,16 +1,22 @@
 package com.will.shop.bean.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.Version;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.will.shop.common.serializer.json.ImgJsonSerializer;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @TableName("tz_prod")
 public class Product implements Serializable {
 
+    private static final long serialVersionUID = -4644407386444894349L;
     /**
      * 商品ID
      */
@@ -28,6 +34,16 @@ public class Product implements Serializable {
     private String prodName;
 
     /**
+     * 原价
+     */
+    private Double oriPrice;
+
+    /**
+     * 现价
+     */
+    private Double price;
+
+    /**
      * 简要描述,卖点等
      */
     private String brief;
@@ -35,6 +51,7 @@ public class Product implements Serializable {
     /**
      * 商品主图
      */
+    @JsonSerialize(using = ImgJsonSerializer.class)
     private String pic;
 
     /**
@@ -58,25 +75,24 @@ public class Product implements Serializable {
     private Integer soldNum;
 
     /**
-     * 录入时间
-     */
-    private Date createTime;
-
-    /**
      * 库存量
-     * 基于 sku 的库存数量累加
      */
     private Integer totalStocks;
 
     /**
-     * 原价
+     * 配送方式json
      */
-    private Double oriPrice;
+    private String deliveryMode;
 
     /**
-     * 现价
+     * 运费模板id
      */
-    private Double price;
+    private Long deliveryTemplateId;
+
+    /**
+     * 录入时间
+     */
+    private Date createTime;
 
     /**
      * 修改时间
@@ -88,20 +104,32 @@ public class Product implements Serializable {
      */
     private String content;
 
+
     /**
      * 上架时间
      */
     private Date putawayTime;
 
     /**
-     * 配送方式json
+     * 版本
      */
-    private String deliveryMode;
+    @Version
+    private Integer version;
 
     /**
-     * 运费模板id
+     * sku列表
      */
-    private Long deliveryTemplateId;
+    @TableField(exist = false)
+    private List<Sku> skuList;
+
+    /**
+     * 店铺名称
+     */
+    @TableField(exist = false)
+    private String shopName;
+
+    @TableField(exist = false)
+    private List<Long> tagList;
 
 
     @Data

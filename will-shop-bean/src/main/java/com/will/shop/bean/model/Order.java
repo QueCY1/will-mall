@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.bean.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -16,17 +6,22 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
- * @author lanhai
+ * 用户订单
+ * @author will
  */
 @Data
 @TableName("tz_order")
 public class Order implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 6222259729062826852L;
+
     /**
      * 订单ID
      */

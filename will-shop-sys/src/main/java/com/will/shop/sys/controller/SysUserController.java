@@ -12,7 +12,7 @@ import com.will.shop.security.admin.util.SecurityUtils;
 import com.will.shop.security.common.enums.SysTypeEnum;
 import com.will.shop.security.common.manager.PasswordManager;
 import com.will.shop.security.common.manager.TokenStore;
-import com.will.shop.sys.dto.UpdatePasswordDTO;
+import com.will.shop.sys.dto.UpdatePasswordDto;
 import com.will.shop.sys.enums.RoleEnum;
 import com.will.shop.sys.model.SysUser;
 import com.will.shop.sys.service.SysRoleService;
@@ -76,7 +76,7 @@ public class SysUserController {
     @SysLog("修改密码")
     @PostMapping("/password")
     @Operation(summary = "修改密码", description = "修改当前登陆用户的密码(前端右上角位置)")
-    public ServerResponseEntity<String> password(@Valid @RequestBody UpdatePasswordDTO updatePasswordDTO) {
+    public ServerResponseEntity<String> password(@Valid @RequestBody UpdatePasswordDto updatePasswordDTO) {
         //去userRuntime里面拿用户的id
         Long userId = SecurityUtils.getSysUser().getUserId();
 

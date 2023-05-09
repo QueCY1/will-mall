@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.will.shop.bean.model.Area;
 import com.will.shop.service.AreaService;
-import com.will.shop.service.dao.AreaMapper;
+import com.will.shop.dao.AreaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;

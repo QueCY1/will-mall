@@ -16,6 +16,7 @@
         <module>will-shop-security</module>
         <module>will-shop-sys</module>
         <module>will-shop-service</module>
+        <module>will-shop-api</module>
     </modules>
 
     <properties>

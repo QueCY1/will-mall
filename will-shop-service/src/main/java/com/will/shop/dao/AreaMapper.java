@@ -1,4 +1,4 @@
-package com.will.shop.service.dao;
+package com.will.shop.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.will.shop.bean.model.Area;
