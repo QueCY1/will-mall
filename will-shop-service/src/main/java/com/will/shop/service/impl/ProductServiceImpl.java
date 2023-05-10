@@ -61,8 +61,8 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Override
     @Transactional(rollbackFor = Exception.class)
     @Caching(evict = {
-            @CacheEvict(cacheNames = "product", key = "#product.prodId"),
-            @CacheEvict(cacheNames = "skuList", key = "#product.prodId")
+            @CacheEvict(cacheNames = "product", key = "#prodId"),
+            @CacheEvict(cacheNames = "skuList", key = "#prodId")
     })
     public void updateProduct(Product product, Product dbProduct) {
 

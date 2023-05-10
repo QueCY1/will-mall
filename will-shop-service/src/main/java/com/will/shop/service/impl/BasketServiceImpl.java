@@ -1,36 +1,26 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
-import com.yami.shop.bean.app.dto.*;
-import com.yami.shop.bean.app.param.ChangeShopCartParam;
-import com.yami.shop.bean.app.param.OrderItemParam;
-import com.yami.shop.bean.app.param.ShopCartParam;
-import com.yami.shop.bean.event.ShopCartEvent;
-import com.yami.shop.bean.model.Basket;
-import com.yami.shop.bean.model.Product;
-import com.yami.shop.bean.model.ShopDetail;
-import com.yami.shop.bean.model.Sku;
-import com.yami.shop.common.util.Arith;
-import com.yami.shop.common.util.CacheManagerUtil;
-import com.yami.shop.dao.BasketMapper;
-import com.yami.shop.service.BasketService;
-import com.yami.shop.service.ProductService;
-import com.yami.shop.service.ShopDetailService;
-import com.yami.shop.service.SkuService;
-import lombok.AllArgsConstructor;
+import com.will.shop.bean.app.dto.*;
+import com.will.shop.bean.app.param.ChangeShopCartParam;
+import com.will.shop.bean.app.param.OrderItemParam;
+import com.will.shop.bean.app.param.ShopCartParam;
+import com.will.shop.bean.event.ShopCartEvent;
+import com.will.shop.bean.model.Basket;
+import com.will.shop.bean.model.Product;
+import com.will.shop.bean.model.ShopDetail;
+import com.will.shop.bean.model.Sku;
+import com.will.shop.common.util.Arithmetic;
+import com.will.shop.common.util.CacheManagerUtil;
+import com.will.shop.dao.BasketMapper;
+import com.will.shop.service.BasketService;
+import com.will.shop.service.ProductService;
+import com.will.shop.service.ShopDetailService;
+import com.will.shop.service.SkuService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -42,10 +32,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author lgh on 2018/10/18.
+ * @author will
  */
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BasketServiceImpl extends ServiceImpl<BasketMapper, Basket> implements BasketService {
 
     private final BasketMapper basketMapper;
@@ -101,7 +91,7 @@ public class BasketServiceImpl extends ServiceImpl<BasketMapper, Basket> impleme
         }
         shopCartItemDtoList = basketMapper.getShopCartItems(userId);
         for (ShopCartItemDto shopCartItemDto : shopCartItemDtoList) {
-            shopCartItemDto.setProductTotalAmount(Arith.mul(shopCartItemDto.getProdCount(), shopCartItemDto.getPrice()));
+            shopCartItemDto.setProductTotalAmount(Arithmetic.mul(shopCartItemDto.getProdCount(), shopCartItemDto.getPrice()));
         }
         cacheManagerUtil.putCache("ShopCartItems", userId, shopCartItemDtoList);
         return shopCartItemDtoList;
@@ -189,7 +179,7 @@ public class BasketServiceImpl extends ServiceImpl<BasketMapper, Basket> impleme
             shopCartItemDto.setSkuName(sku.getSkuName());
             shopCartItemDto.setPic(StrUtil.isBlank(sku.getPic())? prod.getPic() : sku.getPic());
             shopCartItemDto.setProdName(sku.getProdName());
-            shopCartItemDto.setProductTotalAmount(Arith.mul(sku.getPrice(),orderItem.getProdCount()));
+            shopCartItemDto.setProductTotalAmount(Arithmetic.mul(sku.getPrice(),orderItem.getProdCount()));
             shopCartItemDto.setPrice(sku.getPrice());
             shopCartItemDto.setDistributionCardNo(orderItem.getDistributionCardNo());
             shopCartItemDto.setBasketDate(new Date());
