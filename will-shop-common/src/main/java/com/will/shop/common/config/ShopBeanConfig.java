@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 工具注入
+ */
 @Configuration
 @RequiredArgsConstructor
 public class ShopBeanConfig {
@@ -20,7 +23,12 @@ public class ShopBeanConfig {
     }
 
     @Bean
-    public AliDaYu aLiDaYu () {
+    public AES tokenAes() {
+        return new AES(shopBasicConfig.getTokenAesKey().getBytes());
+    }
+
+    @Bean
+    public AliDaYu aLiDaYu() {
         return shopBasicConfig.getALiDaYu();
     }
 

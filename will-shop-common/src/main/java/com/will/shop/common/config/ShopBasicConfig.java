@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * 商城配置文件
- * @author lgh
+ *
+ * @author will
  */
 @Data
 @Component
@@ -19,24 +20,24 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "shop")
 public class ShopBasicConfig {
 
-	/**
-	 * 七牛云的配置信息
-	 */
-	private Qiniu qiniu;
+    /**
+     * 七牛云的配置信息
+     */
+    private Qiniu qiniu;
 
-	/**
-	 * 阿里大于短信平台
-	 */
-	private AliDaYu aLiDaYu;
+    /**
+     * 阿里大于短信平台
+     */
+    private AliDaYu aLiDaYu;
 
-	/**
-	 * 用于加解密token的密钥
-	 */
-	private String tokenAesKey;
+    /**
+     * 用于加解密token的密钥
+     */
+    private String tokenAesKey;
 
-	/**
-	 * 本地文件上传配置
-	 */
-	private ImgUpload imgUpload;
+    /**
+     * 本地文件上传配置
+     */
+    private ImgUpload imgUpload;
 
 }

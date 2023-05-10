@@ -1,23 +1,13 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.service.impl;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yami.shop.bean.app.dto.NoticeDto;
-import com.yami.shop.bean.model.Notice;
-import com.yami.shop.dao.NoticeMapper;
-import com.yami.shop.service.NoticeService;
+import com.will.shop.bean.app.dto.NoticeDto;
+import com.will.shop.bean.model.Notice;
+import com.will.shop.dao.NoticeMapper;
+import com.will.shop.service.NoticeService;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -28,8 +18,7 @@ import java.util.List;
 /**
  * 公告管理
  *
- * @author hzm
- * @date 2019-04-18 21:21:40
+ * @author will
  */
 @Service
 @AllArgsConstructor

@@ -29,7 +29,7 @@ import java.util.Map;
 
 /**
  * redis 缓存配置，仅当配置文件中spring.cache.type = redis时生效
- * @author lgh
+ * @author will
  */
 @EnableCaching
 @Configuration

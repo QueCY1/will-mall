@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author WILL
+ * @author will
  */
 @Data
 @TableName("tz_delivery")

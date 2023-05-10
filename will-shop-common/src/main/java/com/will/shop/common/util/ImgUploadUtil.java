@@ -3,7 +3,7 @@ package com.will.shop.common.util;
 import cn.hutool.core.util.StrUtil;
 import com.will.shop.common.bean.ImgUpload;
 import com.will.shop.common.exception.WillShopBindException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,13 +13,14 @@ import java.util.Objects;
 
 /**
  * 本地文件上传与删除
- * @author TRACK
+ *
+ * @author will
  */
 @Component
+@RequiredArgsConstructor
 public class ImgUploadUtil {
 
-    @Autowired
-    private ImgUpload imgUpload;
+    private final ImgUpload imgUpload;
 
     public Integer getUploadType() {
         Integer uploadType = imgUpload.getUploadType();

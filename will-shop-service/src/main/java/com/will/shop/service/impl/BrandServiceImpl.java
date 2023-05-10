@@ -1,36 +1,25 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yami.shop.bean.model.Brand;
-import com.yami.shop.dao.BrandMapper;
-import com.yami.shop.dao.CategoryBrandMapper;
-import com.yami.shop.service.BrandService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.will.shop.bean.model.Brand;
+import com.will.shop.dao.BrandMapper;
+import com.will.shop.dao.CategoryBrandMapper;
+import com.will.shop.service.BrandService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * @author lanhai
+ * @author will
  */
 @Service
+@RequiredArgsConstructor
 public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements BrandService {
 
-    @Autowired
-    private BrandMapper brandMapper;
-    
-    @Autowired
-    private CategoryBrandMapper categoryBrandMapper;
+    private final BrandMapper brandMapper;
+
+    private final CategoryBrandMapper categoryBrandMapper;
     
 	@Override
 	public Brand getByBrandName(String brandName) {

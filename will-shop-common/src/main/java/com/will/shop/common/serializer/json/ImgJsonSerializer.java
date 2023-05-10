@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * @author lanhai
+ * @author will
  */
 @Component
 public class ImgJsonSerializer extends JsonSerializer<String> {
