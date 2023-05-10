@@ -1,29 +1,20 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yami.shop.bean.app.dto.ProdCommDataDto;
-import com.yami.shop.bean.app.dto.ProdCommDto;
-import com.yami.shop.bean.model.ProdComm;
+import com.will.shop.bean.app.dto.ProdCommDataDto;
+import com.will.shop.bean.app.dto.ProdCommDto;
+import com.will.shop.bean.model.ProdComm;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author lanhai
+ * @author will
  */
 public interface ProdCommMapper extends BaseMapper<ProdComm> {
     /**
      * 根据商品id获取商品评论信息
+     *
      * @param prodId
      * @return
      */
@@ -31,6 +22,7 @@ public interface ProdCommMapper extends BaseMapper<ProdComm> {
 
     /**
      * 根据评价等级和商品id分页获取商品评价
+     *
      * @param page
      * @param prodId
      * @param evaluate
@@ -40,6 +32,7 @@ public interface ProdCommMapper extends BaseMapper<ProdComm> {
 
     /**
      * 根据用户id分页获取评论列表
+     *
      * @param page
      * @param userId
      * @return
@@ -48,6 +41,7 @@ public interface ProdCommMapper extends BaseMapper<ProdComm> {
 
     /**
      * 根据参数分页获取商品评论
+     *
      * @param page
      * @param prodComm
      * @return
