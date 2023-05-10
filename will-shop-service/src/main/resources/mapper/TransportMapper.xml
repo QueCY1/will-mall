@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yami.shop.dao.TransportMapper">
-  <resultMap id="BaseResultMap" type="com.yami.shop.bean.model.Transport">
+<mapper namespace="com.will.shop.dao.TransportMapper">
+  <resultMap id="BaseResultMap" type="com.will.shop.bean.model.Transport">
     <!--
       WARNING - @mbg.generated
     -->
@@ -14,7 +14,7 @@
     <result column="has_free_condition" jdbcType="INTEGER" property="hasFreeCondition" />
   </resultMap>
   
- <resultMap id="TransportAndTransfeeAndTranscityMap" type="com.yami.shop.bean.model.Transport">
+ <resultMap id="TransportAndTransfeeAndTranscityMap" type="com.will.shop.bean.model.Transport">
     <id column="transport_id" jdbcType="BIGINT" property="transportId" />
     <result column="trans_name" jdbcType="VARCHAR" property="transName" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -22,29 +22,23 @@
     <result column="charge_type" jdbcType="TINYINT" property="chargeType" />
     <result column="is_free_fee" jdbcType="TINYINT" property="isFreeFee" />
     <result column="has_free_condition" jdbcType="INTEGER" property="hasFreeCondition" />
-    <collection property="transfees" ofType="com.yami.shop.bean.model.Transfee">
+    <collection property="transfees" ofType="com.will.shop.bean.model.Transfee">
         <result column="transfee_id" jdbcType="BIGINT" property="transfeeId" />
 	    <result column="transport_id" jdbcType="BIGINT" property="transportId" />
 	    <result column="continuous_piece" jdbcType="DECIMAL" property="continuousPiece" />
 	    <result column="first_piece" jdbcType="DECIMAL" property="firstPiece" />
 	    <result column="continuous_fee" jdbcType="DECIMAL" property="continuousFee" />
 	    <result column="first_fee" jdbcType="DECIMAL" property="firstFee" />
-	    <collection property="cityList" ofType="com.yami.shop.bean.model.Area" >
-	        <id column="area_id" jdbcType="BIGINT" property="areaId" />
-		    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
-		    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
-		    <result column="level" jdbcType="INTEGER" property="level" />
-	    </collection>
     </collection>
   </resultMap>
   
-  <resultMap id="TransfeeFreeAndTranscityFreeMap" type="com.yami.shop.bean.model.TransfeeFree">
+  <resultMap id="TransfeeFreeAndTranscityFreeMap" type="com.will.shop.bean.model.TransfeeFree">
       <id column="transfee_free_id" jdbcType="BIGINT" property="transfeeFreeId" />
       <result column="transport_id" jdbcType="BIGINT" property="transportId" />
       <result column="free_type" jdbcType="TINYINT" property="freeType" />
       <result column="amount" jdbcType="DECIMAL" property="amount" />
       <result column="piece" jdbcType="DECIMAL" property="piece" />
-      <collection property="freeCityList" ofType="com.yami.shop.bean.model.Area">
+      <collection property="freeCityList" ofType="com.will.shop.bean.model.Area">
           <id column="area_id" jdbcType="BIGINT" property="areaId" />
           <result column="area_name" jdbcType="VARCHAR" property="areaName" />
           <result column="parent_id" jdbcType="BIGINT" property="parentId" />

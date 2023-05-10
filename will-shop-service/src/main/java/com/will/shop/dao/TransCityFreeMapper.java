@@ -8,15 +8,13 @@
  * 版权所有，侵权必究！
  */
 
-package com.will.shop.service;
+package com.will.shop.dao;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yami.shop.bean.model.TranscityFree;
 
 /**
- *
- * @author lgh on 2018/12/20.
+ * @author lanhai
  */
-public interface TranscityFreeService extends IService<TranscityFree> {
-
+public interface TransCityFreeMapper extends BaseMapper<TranscityFree> {
 }

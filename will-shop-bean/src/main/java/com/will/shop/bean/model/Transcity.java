@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.bean.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -18,13 +8,12 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author lanhai
+ * @author will
  */
 @Data
 @TableName("tz_transcity")
 public class Transcity implements Serializable {
     @TableId
-
     private Long transcityId;
 
     /**
@@ -42,6 +31,6 @@ public class Transcity implements Serializable {
     /**
      * 城市名称
      */
-    @TableField(exist=false)
+    @TableField(exist = false)
     private String areaName;
 }

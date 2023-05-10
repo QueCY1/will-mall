@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  * @author lgh on 2018/11/16.
  */
 @Service
-public class TranscityServiceImpl extends ServiceImpl<TranscityMapper, Transcity> implements TranscityService {
+public class TransCityServiceImpl extends ServiceImpl<TranscityMapper, Transcity> implements TranscityService {
 
     @Autowired
     private TranscityMapper transcityMapper;
