@@ -1,7 +1,7 @@
 package com.will.shop.security.api.util;
 
-import com.will.shop.common.util.HttpContextUtils;
 import com.will.shop.security.api.model.WillUser;
+import com.will.shop.common.util.HttpContextUtils;
 import com.will.shop.security.common.bo.UserInfoInTokenBO;
 import com.will.shop.security.common.util.AuthUserContext;
 import lombok.experimental.UtilityClass;

@@ -1,7 +1,8 @@
-package com.will.shop.security.api.listener;
+package com.will.shop.api.listener;
 
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.StrUtil;
+import com.will.shop.security.api.util.SecurityUtils;
 import com.will.shop.bean.app.dto.ShopCartItemDiscountDto;
 import com.will.shop.bean.app.dto.ShopCartItemDto;
 import com.will.shop.bean.app.dto.ShopCartOrderDto;
@@ -14,7 +15,6 @@ import com.will.shop.common.constants.Constant;
 import com.will.shop.common.exception.WillShopBindException;
 import com.will.shop.common.util.Arithmetic;
 import com.will.shop.dao.*;
-import com.will.shop.security.api.util.SecurityUtils;
 import com.will.shop.service.ProductService;
 import com.will.shop.service.SkuService;
 import com.will.shop.service.UserAddrOrderService;
