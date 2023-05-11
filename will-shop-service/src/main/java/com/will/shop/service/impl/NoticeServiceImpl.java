@@ -9,6 +9,7 @@ import com.will.shop.bean.model.Notice;
 import com.will.shop.dao.NoticeMapper;
 import com.will.shop.service.NoticeService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -21,10 +22,10 @@ import java.util.List;
  * @author will
  */
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> implements NoticeService {
 
-    private NoticeMapper noticeMapper;
+    private final NoticeMapper noticeMapper;
 
     @Override
     @Cacheable(cacheNames = "notices", key = "'notices'")

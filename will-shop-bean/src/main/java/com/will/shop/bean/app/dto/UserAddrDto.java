@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 /**
  * 用户下单地址
+ *
  * @author will
  */
 @Data

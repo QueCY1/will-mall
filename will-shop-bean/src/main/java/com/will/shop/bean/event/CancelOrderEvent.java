@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
- * 取消订单的事件
+ * 取消订单的事件(缺少监听器监听此事件)
  * @author will
  */
 @Data

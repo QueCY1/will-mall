@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.bean.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -16,14 +6,17 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
+
 /**
- * @author lanhai
+ * @author will
  */
 @Data
 @TableName("tz_user")
 public class User implements Serializable {
+    @Serial
     private static final long serialVersionUID = 2090714647038636896L;
     /**
      * ID
@@ -70,14 +63,14 @@ public class User implements Serializable {
      * 修改时间
      */
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date modifyTime;
 
     /**
      * 注册时间
      */
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date userRegtime;
 
     /**
@@ -90,7 +83,7 @@ public class User implements Serializable {
      * 最后登录时间
      */
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date userLasttime;
 
     /**
@@ -114,7 +107,7 @@ public class User implements Serializable {
      * 例如：2009-11-27
      */
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String birthDate;
 
     /**

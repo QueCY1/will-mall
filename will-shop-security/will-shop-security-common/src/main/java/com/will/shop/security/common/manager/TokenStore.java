@@ -92,6 +92,7 @@ public class TokenStore {
                 for (String accessTokenWithRefreshToken : tokenInfoBoList) {
                     String[] accessTokenWithRefreshTokenArr = accessTokenWithRefreshToken.split(StrUtil.COLON);
                     String accessTokenData = accessTokenWithRefreshTokenArr[0];
+                    //如果token已经过期，那么不再加入到existsAccessTokensBytes中，这样再次存到redis中就可以清除掉过期的值了
                     if (BooleanUtil.isTrue(stringRedisTemplate.hasKey(getAccessKey(accessTokenData)))) {
                         existsAccessTokensBytes.add(accessTokenWithRefreshToken.getBytes(StandardCharsets.UTF_8));
                     }

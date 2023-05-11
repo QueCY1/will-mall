@@ -6,7 +6,7 @@ import com.will.shop.bean.model.IndexImg;
 import java.util.List;
 
 /**
- * @author lgh on 2018/11/26.
+ * @author will
  */
 public interface IndexImgService extends IService<IndexImg> {
 

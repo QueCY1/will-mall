@@ -167,14 +167,18 @@
     </resultMap>
 
     <select id="getOrderByOrderNumber" resultType="com.will.shop.bean.model.Order">
-    select * from tz_order o where o.order_number = #{orderNumber}
-  </select>
+        select *
+        from tz_order o
+        where o.order_number = #{orderNumber}
+    </select>
 
     <select id="listOrderAndOrderItems" resultMap="orderAndOrderItemMap">
-    select o.*,oi.* from tz_order o left join tz_order_item oi on o.order_number = oi.order_number
-    where o.status = #{orderStatus}
-    and o.update_time &lt; #{lessThanUpdateTime}
-  </select>
+        select o.*, oi.*
+        from tz_order o
+                 left join tz_order_item oi on o.order_number = oi.order_number
+        where o.status = #{orderStatus}
+          and o.update_time &lt; #{lessThanUpdateTime}
+    </select>
 
     <update id="cancelOrders">
         update tz_order set `status`=6,cancel_time = NOW() where is_payed = 0 and order_id in
@@ -191,11 +195,12 @@
     </update>
 
     <update id="updateByToPaySuccess">
-    update tz_order set status = 2,is_payed =1,update_time=NOW(),pay_time=NOW(),pay_type =#{payType} where order_number in
-    <foreach collection="orderNumbers" item="orderNumber" separator="," open="(" close=")">
-        #{orderNumber}
-    </foreach>
-  </update>
+        update tz_order set status = 2,is_payed =1,update_time=NOW(),pay_time=NOW(),pay_type =#{payType} where
+        order_number in
+        <foreach collection="orderNumbers" item="orderNumber" separator="," open="(" close=")">
+            #{orderNumber}
+        </foreach>
+    </update>
 
     <select id="listOrdersDetailByOrder" resultMap="orderAndOrderItemAndUserAddrMap">
         select o.*,oi.*,oi.prod_name as item_prod_name,uao.* from tz_order o
@@ -289,22 +294,23 @@
     </select>
 
 
-
     <select id="listBoughtProdByUserIdAndShopId" resultType="long">
-        select
-            oi.prod_id
+        select oi.prod_id
         from tz_order_item oi
                  join tz_order o on o.order_number = oi.order_number
-        where o.user_id=#{userId} and o.shop_id = #{shopId} and (o.status = 4 or o.status = 5)
+        where o.user_id = #{userId}
+          and o.shop_id = #{shopId}
+          and (o.status = 4 or o.status = 5)
     </select>
 
 
     <select id="calculateUserInShopData" resultType="com.will.shop.bean.app.dto.UserShoppingDataDto">
-        select
-            count(o.order_number) as expense_number,
-            ifnull(SUM(o.actual_total),0) as expense_amount
+        select count(o.order_number)          as expense_number,
+               ifnull(SUM(o.actual_total), 0) as expense_amount
         from tz_order o
-        where o.user_id=#{userId} and o.shop_id = #{shopId} and (o.status = 4 or o.status = 5)
+        where o.user_id = #{userId}
+          and o.shop_id = #{shopId}
+          and (o.status = 4 or o.status = 5)
     </select>
 
     <select id="listMyOrderByUserIdAndStatus" resultMap="MyOrderMap">
@@ -340,16 +346,15 @@
     </update>
 
     <select id="getOrderCount" resultType="com.will.shop.bean.app.dto.OrderCountData">
-        SELECT
-        COUNT(o.order_id) all_count,
-        COUNT( CASE WHEN o.status = 1 THEN o.order_id ELSE NULL END ) AS unPay,
-        COUNT( CASE WHEN o.status = 2 THEN o.order_id ELSE NULL END ) AS payed,
-        COUNT( CASE WHEN o.status = 3 THEN o.order_id ELSE NULL END ) AS consignment,
-        COUNT( CASE WHEN o.status = 4 THEN o.order_id ELSE NULL END ) AS confirm,
-        COUNT( CASE WHEN o.status = 5 THEN o.order_id ELSE NULL END ) AS success,
-        COUNT( CASE WHEN o.status = 6 THEN o.order_id ELSE NULL END ) AS `close`
+        SELECT COUNT(o.order_id)                                              all_count,
+               COUNT(CASE WHEN o.status = 1 THEN o.order_id ELSE NULL END) AS unPay,
+               COUNT(CASE WHEN o.status = 2 THEN o.order_id ELSE NULL END) AS payed,
+               COUNT(CASE WHEN o.status = 3 THEN o.order_id ELSE NULL END) AS consignment,
+               COUNT(CASE WHEN o.status = 4 THEN o.order_id ELSE NULL END) AS confirm,
+               COUNT(CASE WHEN o.status = 5 THEN o.order_id ELSE NULL END) AS success,
+               COUNT(CASE WHEN o.status = 6 THEN o.order_id ELSE NULL END) AS `close`
         FROM tz_order o
-        WHERE o.user_id =#{userId}
+        WHERE o.user_id = #{userId}
     </select>
 
 </mapper>

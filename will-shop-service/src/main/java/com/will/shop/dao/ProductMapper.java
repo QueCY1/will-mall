@@ -19,6 +19,7 @@ import java.util.Map;
 public interface ProductMapper extends BaseMapper<Product> {
     /**
      * 更新商品库存
+     *
      * @param product
      * @return
      */
@@ -26,6 +27,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 根据商品名称和店铺id获取商品信息
+     *
      * @param prodName
      * @param shopId
      * @return
@@ -34,12 +36,14 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 返回库存
+     *
      * @param prodCollect
      */
     void returnStock(@Param("prodCollect") Map<Long, Integer> prodCollect);
 
     /**
      * 根据上架时间分页获取商品
+     *
      * @param page
      * @return
      */
@@ -47,6 +51,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 根据标签id分页获取商品信息
+     *
      * @param page
      * @param tagId
      * @return
@@ -55,6 +60,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 分页获取销量最多的商品
+     *
      * @param page
      * @return
      */
@@ -62,6 +68,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 根据分类id分页获取商品
+     *
      * @param page
      * @param categoryId
      * @return
@@ -70,6 +77,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 根据商品名称和排序分页获取商品
+     *
      * @param page
      * @param prodName
      * @param sort
@@ -80,6 +88,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 根据标签id获取商品
+     *
      * @param tagId
      * @return
      */
@@ -87,12 +96,14 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 获取分组商品列表
+     *
      * @return
      */
     List<TagProductDto> tagProdList();
 
     /**
      * 查看店铺的所有活动商品
+     *
      * @param shopId
      * @param page
      * @return
@@ -101,6 +112,7 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 通过优惠券适用商品类型、优惠券id、店铺id获取商品列表
+     *
      * @param shopId
      * @param page
      * @param couponId
@@ -111,10 +123,11 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     /**
      * 获取用户的收藏商品列表
+     *
      * @param page
      * @param userId
      * @return
      */
-    IPage<ProductDto> collectionProds(@Param("page") PageParam page, @Param("userId") String userId);
+    IPage<ProductDto> collectionProds(@Param("page") PageParam<ProductDto> page, @Param("userId") String userId);
 
 }

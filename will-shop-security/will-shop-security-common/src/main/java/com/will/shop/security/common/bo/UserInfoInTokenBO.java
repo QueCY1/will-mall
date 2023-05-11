@@ -7,8 +7,7 @@ import java.util.Set;
 /**
  * 保存在token信息里面的用户信息
  *
- * @author 菠萝凤梨
- * @date 2022/3/25 17:33
+ * @author will
  */
 @Data
 public class UserInfoInTokenBO {
@@ -30,6 +29,7 @@ public class UserInfoInTokenBO {
 
     /**
      * 系统类型
+     *
      * @see com.will.shop.security.common.enums.SysTypeEnum
      */
     private Integer sysType;
