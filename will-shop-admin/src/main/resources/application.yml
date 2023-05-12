@@ -27,13 +27,11 @@ spring:
       cache-null-values: true #是否缓存空值，防止缓存穿透
 logging:
   config: classpath:logback/logback-dev.xml
-  level:
-    web: debug
-#xxl-job:
-#  accessToken: default_token
-#  logPath: /data/applogs/xxl-job/jobhandler
-#  admin:
-#    addresses: http://localhost:8080/xxl-job-admin
+xxl-job:
+  accessToken: default_token
+  logPath: /data/applogs/xxl-job/jobhandler
+  admin:
+    addresses: http://localhost:8080/xxl-job-admin
 
 # mybaits-plus配置
 mybatis-plus:

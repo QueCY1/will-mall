@@ -20,7 +20,6 @@ import java.util.Objects;
 
 /**
  * @author will
- * @date 2022/05/06
  */
 @Component
 @RequiredArgsConstructor
@@ -29,6 +28,23 @@ public class HttpHandler {
     private static final Logger logger = LoggerFactory.getLogger(HttpHandler.class);
 
     private final ObjectMapper objectMapper;
+
+    public <T> void printServerResponseToWeb(WillShopBindException WillShopBindException) {
+        if (WillShopBindException == null) {
+            logger.info("print obj is null");
+            return;
+        }
+
+        if (Objects.nonNull(WillShopBindException.getServerResponseEntity())) {
+            printServerResponseToWeb(WillShopBindException.getServerResponseEntity());
+            return;
+        }
+
+        ServerResponseEntity<T> serverResponseEntity = new ServerResponseEntity<>();
+        serverResponseEntity.setCode(WillShopBindException.getCode());
+        serverResponseEntity.setMsg(WillShopBindException.getMessage());
+        printServerResponseToWeb(serverResponseEntity);
+    }
 
     public <T> void printServerResponseToWeb(ServerResponseEntity<T> serverResponseEntity) {
         if (serverResponseEntity == null) {
@@ -57,22 +73,5 @@ public class HttpHandler {
         } catch (IOException e) {
             throw new WillShopBindException("io 异常", e);
         }
-    }
-
-    public <T> void printServerResponseToWeb(WillShopBindException WillShopBindException) {
-        if (WillShopBindException == null) {
-            logger.info("print obj is null");
-            return;
-        }
-
-        if (Objects.nonNull(WillShopBindException.getServerResponseEntity())) {
-            printServerResponseToWeb(WillShopBindException.getServerResponseEntity());
-            return;
-        }
-
-        ServerResponseEntity<T> serverResponseEntity = new ServerResponseEntity<>();
-        serverResponseEntity.setCode(WillShopBindException.getCode());
-        serverResponseEntity.setMsg(WillShopBindException.getMessage());
-        printServerResponseToWeb(serverResponseEntity);
     }
 }

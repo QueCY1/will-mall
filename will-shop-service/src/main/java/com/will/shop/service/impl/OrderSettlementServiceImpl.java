@@ -1,35 +1,24 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yami.shop.bean.model.OrderSettlement;
-import com.yami.shop.dao.OrderSettlementMapper;
-import com.yami.shop.service.OrderSettlementService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.will.shop.bean.model.OrderSettlement;
+import com.will.shop.dao.OrderSettlementMapper;
+import com.will.shop.service.OrderSettlementService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
- *
- * @author lgh on 2018/11/10.
+ * @author will
  */
 @Service
+@RequiredArgsConstructor
 public class OrderSettlementServiceImpl extends ServiceImpl<OrderSettlementMapper, OrderSettlement> implements OrderSettlementService {
 
-    @Autowired
-    private OrderSettlementMapper orderSettlementMapper;
+    private final OrderSettlementMapper orderSettlementMapper;
 
-	@Override
-	public void updateSettlementsByPayNo(String outTradeNo, String transactionId) {
-		orderSettlementMapper.updateSettlementsByPayNo(outTradeNo, transactionId);
-	}
+    @Override
+    public void updateSettlementsByPayNo(String outTradeNo, String transactionId) {
+        orderSettlementMapper.updateSettlementsByPayNo(outTradeNo, transactionId);
+    }
 
 }
