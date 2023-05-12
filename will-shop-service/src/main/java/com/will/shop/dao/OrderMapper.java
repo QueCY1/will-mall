@@ -6,7 +6,7 @@ import com.will.shop.bean.app.dto.MyOrderDto;
 import com.will.shop.bean.app.dto.OrderCountData;
 import com.will.shop.bean.app.dto.UserShoppingDataDto;
 import com.will.shop.bean.model.Order;
-import com.will.shop.bean.admin.param.OrderParam;
+import com.will.shop.bean.param.OrderParam;
 import com.will.shop.common.util.PageAdapter;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.dto;
+package com.will.shop.bean.dto;
 
 
 import io.swagger.v3.oas.annotations.media.Schema;

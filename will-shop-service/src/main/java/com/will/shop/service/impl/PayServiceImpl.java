@@ -1,30 +1,20 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.service.impl;
 
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.yami.shop.bean.app.param.PayParam;
-import com.yami.shop.bean.enums.PayType;
-import com.yami.shop.bean.event.PaySuccessOrderEvent;
-import com.yami.shop.bean.model.Order;
-import com.yami.shop.bean.model.OrderSettlement;
-import com.yami.shop.bean.pay.PayInfoDto;
-import com.yami.shop.common.exception.YamiShopBindException;
-import com.yami.shop.common.util.Arith;
-import com.yami.shop.dao.OrderMapper;
-import com.yami.shop.dao.OrderSettlementMapper;
-import com.yami.shop.service.PayService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.will.shop.bean.app.param.PayParam;
+import com.will.shop.bean.enums.PayType;
+import com.will.shop.bean.event.PaySuccessOrderEvent;
+import com.will.shop.bean.model.Order;
+import com.will.shop.bean.model.OrderSettlement;
+import com.will.shop.bean.app.pay.PayInfoDto;
+import com.will.shop.common.exception.WillShopBindException;
+import com.will.shop.common.util.Arithmetic;
+import com.will.shop.dao.OrderMapper;
+import com.will.shop.dao.OrderSettlementMapper;
+import com.will.shop.service.PayService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,25 +23,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author lgh on 2018/09/15.
+ * @author will
  */
 @Service
+@RequiredArgsConstructor
 public class PayServiceImpl implements PayService {
 
-    @Autowired
-    private OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
 
+    private final OrderSettlementMapper orderSettlementMapper;
 
+    private final ApplicationEventPublisher eventPublisher;
 
-    @Autowired
-    private OrderSettlementMapper orderSettlementMapper;
-
-
-    @Autowired
-    private ApplicationEventPublisher eventPublisher;
-
-    @Autowired
-    private Snowflake snowflake;
+    private final Snowflake snowflake;
 
     /**
      * 不同的订单号，同一个支付流水号
@@ -83,7 +67,7 @@ public class PayServiceImpl implements PayService {
         // 应支付的总金额
         double payAmount = 0.0;
         for (OrderSettlement orderSettlement : settlements) {
-            payAmount = Arith.add(payAmount, orderSettlement.getPayAmount());
+            payAmount = Arithmetic.add(payAmount, orderSettlement.getPayAmount());
         }
 
         prodName.substring(0, Math.min(100, prodName.length() - 1));
@@ -105,11 +89,11 @@ public class PayServiceImpl implements PayService {
 
         // 订单已支付
         if (settlement.getPayStatus() == 1) {
-            throw new YamiShopBindException("订单已支付");
+            throw new WillShopBindException("订单已支付");
         }
         // 修改订单结算信息
         if (orderSettlementMapper.updateToPay(payNo, settlement.getVersion()) < 1) {
-            throw new YamiShopBindException("结算信息已更改");
+            throw new WillShopBindException("结算信息已更改");
         }
 
 

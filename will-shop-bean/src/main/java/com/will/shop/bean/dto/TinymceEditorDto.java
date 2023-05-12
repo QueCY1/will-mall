@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.dto;
+package com.will.shop.bean.dto;
 
 /**
  * 富文本编辑器 图片上传返回数据

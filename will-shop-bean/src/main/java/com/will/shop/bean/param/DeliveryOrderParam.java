@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.param;
+package com.will.shop.bean.param;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

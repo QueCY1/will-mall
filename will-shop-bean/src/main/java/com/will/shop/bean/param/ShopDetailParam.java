@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.param;
+package com.will.shop.bean.param;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

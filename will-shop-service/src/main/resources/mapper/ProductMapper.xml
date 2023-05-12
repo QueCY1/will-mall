@@ -148,7 +148,7 @@
         ORDER BY pt.`seq` DESC
     </select>
 
-    <select id="getSearchProdDtoPageByProdName" resultType="com.will.shop.bean.admin.dto.SearchProdDto">
+    <select id="getSearchProdDtoPageByProdName" resultType="com.will.shop.bean.dto.SearchProdDto">
         select
         p.prod_id,
         p.pic,

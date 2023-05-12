@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.dto;
+package com.will.shop.bean.dto;
 
 import com.will.shop.bean.model.Sku;
 import lombok.Data;

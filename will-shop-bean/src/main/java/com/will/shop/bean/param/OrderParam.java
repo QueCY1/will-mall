@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.param;
+package com.will.shop.bean.param;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

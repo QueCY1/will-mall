@@ -2,7 +2,7 @@ package com.will.shop.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.will.shop.bean.model.User;
-import com.will.shop.bean.admin.param.UserRegisterParam;
+import com.will.shop.bean.param.UserRegisterParam;
 
 /**
  * @author will

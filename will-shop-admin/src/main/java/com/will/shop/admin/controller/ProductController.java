@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.will.shop.bean.model.Product;
 import com.will.shop.bean.model.Sku;
-import com.will.shop.bean.admin.param.ProductParam;
+import com.will.shop.bean.param.ProductParam;
 import com.will.shop.common.exception.WillShopBindException;
 import com.will.shop.common.response.ServerResponseEntity;
 import com.will.shop.common.util.Json;

@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.param;
+package com.will.shop.bean.param;
 
 import com.will.shop.bean.model.Product;
 import com.will.shop.bean.model.Sku;

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.will.shop.bean.app.dto.ProductDto;
 import com.will.shop.bean.app.dto.TagProductDto;
-import com.will.shop.bean.admin.dto.SearchProdDto;
+import com.will.shop.bean.dto.SearchProdDto;
 import com.will.shop.bean.model.Product;
 import com.will.shop.common.util.PageParam;
 import org.apache.ibatis.annotations.Param;

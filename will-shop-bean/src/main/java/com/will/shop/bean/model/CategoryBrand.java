@@ -7,7 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author lanhai
+ * @author will
  */
 @Data
 @TableName("tz_category_brand")

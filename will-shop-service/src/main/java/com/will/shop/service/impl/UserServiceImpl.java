@@ -3,7 +3,7 @@ package com.will.shop.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.will.shop.bean.model.User;
-import com.will.shop.bean.admin.param.UserRegisterParam;
+import com.will.shop.bean.param.UserRegisterParam;
 import com.will.shop.common.exception.WillShopBindException;
 import com.will.shop.common.util.RedisUtil;
 import com.will.shop.dao.UserMapper;

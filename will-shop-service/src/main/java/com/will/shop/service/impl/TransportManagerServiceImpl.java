@@ -1,43 +1,34 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.yami.shop.bean.app.dto.ProductItemDto;
-import com.yami.shop.bean.enums.TransportChargeType;
-import com.yami.shop.bean.model.*;
-import com.yami.shop.common.util.Arith;
-import com.yami.shop.common.util.Json;
-import com.yami.shop.service.ProductService;
-import com.yami.shop.service.SkuService;
-import com.yami.shop.service.TransportManagerService;
-import com.yami.shop.service.TransportService;
+import com.will.shop.bean.app.dto.ProductItemDto;
+import com.will.shop.bean.enums.TransportChargeType;
+import com.will.shop.bean.model.*;
+import com.will.shop.common.util.Arithmetic;
+import com.will.shop.common.util.Json;
+import com.will.shop.service.ProductService;
+import com.will.shop.service.SkuService;
+import com.will.shop.service.TransportManagerService;
+import com.will.shop.service.TransportService;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+
 /**
- * @author lanhai
+ * @author will
  */
 @Service
+@RequiredArgsConstructor
 public class TransportManagerServiceImpl implements TransportManagerService {
 
-    @Autowired
-    private ProductService productService;
-    @Autowired
-    private SkuService skuService;
-    @Autowired
-    private TransportService transportService;
+    private final ProductService productService;
+
+    private final SkuService skuService;
+
+    private final TransportService transportService;
 
     @Override
     public Double calculateTransfee(ProductItemDto productItem, UserAddr userAddr) {
@@ -120,12 +111,12 @@ public class TransportManagerServiceImpl implements TransportManagerService {
         // 如果件数大于首件数量，则开始计算超出的运费
         if (piece > transfee.getFirstPiece()) {
             // 续件数量
-            Double prodContinuousPiece = Arith.sub(piece, transfee.getFirstPiece());
+            Double prodContinuousPiece = Arithmetic.sub(piece, transfee.getFirstPiece());
             // 续件数量的倍数，向上取整
-            Integer mulNumber = (int) Math.ceil(Arith.div(prodContinuousPiece, transfee.getContinuousPiece()));
+            Integer mulNumber = (int) Math.ceil(Arithmetic.div(prodContinuousPiece, transfee.getContinuousPiece()));
             // 续件数量运费
-            Double continuousFee = Arith.mul(mulNumber, transfee.getContinuousFee());
-            fee = Arith.add(fee, continuousFee);
+            Double continuousFee = Arithmetic.mul(mulNumber, transfee.getContinuousFee());
+            fee = Arithmetic.add(fee, continuousFee);
         }
         return fee;
     }
@@ -140,11 +131,11 @@ public class TransportManagerServiceImpl implements TransportManagerService {
         } else if (Objects.equals(TransportChargeType.WEIGHT.value(), transport.getChargeType())) {
             // 按重量计算运费
             double weight = sku.getWeight() == null ? 0 : sku.getWeight();
-            piece = Arith.mul(weight, productItem.getProdCount());
+            piece = Arithmetic.mul(weight, productItem.getProdCount());
         } else if (Objects.equals(TransportChargeType.VOLUME.value(), transport.getChargeType())) {
             // 按体积计算运费
             double volume = sku.getVolume() == null ? 0 : sku.getVolume();
-            piece = Arith.mul(volume, productItem.getProdCount());
+            piece = Arithmetic.mul(volume, productItem.getProdCount());
         }
         return piece;
     }

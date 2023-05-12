@@ -12,7 +12,7 @@ import com.will.shop.bean.event.ReceiptOrderEvent;
 import com.will.shop.bean.event.SubmitOrderEvent;
 import com.will.shop.bean.model.Order;
 import com.will.shop.bean.model.OrderItem;
-import com.will.shop.bean.admin.param.OrderParam;
+import com.will.shop.bean.param.OrderParam;
 import com.will.shop.common.util.PageAdapter;
 import com.will.shop.dao.OrderItemMapper;
 import com.will.shop.dao.OrderMapper;

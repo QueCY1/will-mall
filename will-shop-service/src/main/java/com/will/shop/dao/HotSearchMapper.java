@@ -1,7 +1,7 @@
 package com.will.shop.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.will.shop.bean.admin.dto.HotSearchDto;
+import com.will.shop.bean.dto.HotSearchDto;
 import com.will.shop.bean.model.HotSearch;
 
 import java.util.List;

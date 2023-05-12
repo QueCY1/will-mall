@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.will.shop.bean.model.ShopDetail;
-import com.will.shop.bean.admin.param.ShopDetailParam;
+import com.will.shop.bean.param.ShopDetailParam;
 import com.will.shop.common.response.ServerResponseEntity;
 import com.will.shop.common.util.PageParam;
 import com.will.shop.security.admin.util.SecurityUtils;

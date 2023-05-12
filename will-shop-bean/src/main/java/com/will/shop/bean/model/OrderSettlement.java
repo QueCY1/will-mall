@@ -29,16 +29,15 @@ public class OrderSettlement implements Serializable {
      * 外部订单流水号
      */
     private String bizPayNo;
-    
+
     /**
      * 订单号
      */
     private String orderNumber;
-    
+
     /**
      * 支付方式 0 手动代付 1 微信支付 2 支付宝
      */
-
     private Integer payType;
 
     /**
@@ -49,32 +48,28 @@ public class OrderSettlement implements Serializable {
     /**
      * 用户ID
      */
-
     private String userId;
 
     /**
      * 是否清算 0:否 1:是
      */
-
     private Integer isClearing;
 
     /**
      * 创建时间
      */
-
     private Date createTime;
 
     /**
      * 清算时间
      */
-
     private Date clearingTime;
 
     /**
      * 支付状态
      */
     private Integer payStatus;
-    
+
     /**
      * 版本号
      */

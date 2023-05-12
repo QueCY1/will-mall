@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
@@ -22,13 +12,13 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.yami.shop.bean.enums.SmsType;
-import com.yami.shop.bean.model.SmsLog;
-import com.yami.shop.common.bean.AliDaYu;
-import com.yami.shop.common.exception.YamiShopBindException;
-import com.yami.shop.common.util.Json;
-import com.yami.shop.dao.SmsLogMapper;
-import com.yami.shop.service.SmsLogService;
+import com.will.shop.bean.enums.SmsType;
+import com.will.shop.bean.model.SmsLog;
+import com.will.shop.common.bean.AliDaYu;
+import com.will.shop.common.exception.WillShopBindException;
+import com.will.shop.common.util.Json;
+import com.will.shop.dao.SmsLogMapper;
+import com.will.shop.service.SmsLogService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -41,7 +31,7 @@ import java.util.Map.Entry;
 
 
 /**
- * @author lgh on 2018/11/29.
+ * @author will
  */
 @Service
 @Slf4j
@@ -93,7 +83,7 @@ public class SmsLogServiceImpl extends ServiceImpl<SmsLogMapper, SmsLog> impleme
                     .eq(SmsLog::getUserId, userId)
                     .eq(SmsLog::getType, smsType.value()));
             if (todaySendSmsNumber >= TODAY_MAX_SEND_VALID_SMS_NUMBER) {
-                throw new YamiShopBindException("今日发送短信验证码次数已达到上限");
+                throw new WillShopBindException("今日发送短信验证码次数已达到上限");
             }
 
             // 将上一条验证码失效
@@ -113,7 +103,7 @@ public class SmsLogServiceImpl extends ServiceImpl<SmsLogMapper, SmsLog> impleme
         try {
             this.sendSms(mobile, smsType.getTemplateCode(), params);
         } catch (ClientException e) {
-            throw new YamiShopBindException("发送短信失败，请稍后再试");
+            throw new WillShopBindException("发送短信失败，请稍后再试");
         }
 
 
@@ -145,7 +135,7 @@ public class SmsLogServiceImpl extends ServiceImpl<SmsLogMapper, SmsLog> impleme
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
         log.debug(Json.toJsonString(sendSmsResponse));
         if (sendSmsResponse.getCode() == null || !SEND_SMS_SUCCESS_FLAG.equals(sendSmsResponse.getCode())) {
-            throw new YamiShopBindException("发送短信失败，请稍后再试:" + sendSmsResponse.getMessage());
+            throw new WillShopBindException("发送短信失败，请稍后再试:" + sendSmsResponse.getMessage());
         }
     }
 

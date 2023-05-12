@@ -1,7 +1,7 @@
 package com.will.shop.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.will.shop.bean.admin.dto.HotSearchDto;
+import com.will.shop.bean.dto.HotSearchDto;
 import com.will.shop.bean.model.HotSearch;
 
 import java.util.List;

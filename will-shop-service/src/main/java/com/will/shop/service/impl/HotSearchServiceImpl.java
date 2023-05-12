@@ -1,7 +1,7 @@
 package com.will.shop.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.will.shop.bean.admin.dto.HotSearchDto;
+import com.will.shop.bean.dto.HotSearchDto;
 import com.will.shop.bean.model.HotSearch;
 import com.will.shop.dao.HotSearchMapper;
 import com.will.shop.service.HotSearchService;

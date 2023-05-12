@@ -1,4 +1,4 @@
-package com.will.shop.bean.admin.dto;
+package com.will.shop.bean.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.will.shop.common.serializer.json.ImgJsonSerializer;
