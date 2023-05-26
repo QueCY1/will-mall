@@ -17,43 +17,36 @@ public class Basket implements Serializable {
      * 主键
      */
     @TableId
-
     private Long basketId;
 
     /**
      * 店铺ID
      */
-
     private Long shopId;
 
     /**
      * 产品ID
      */
-
     private Long prodId;
 
     /**
      * SkuID
      */
-
     private Long skuId;
 
     /**
      * 用户ID
      */
-
     private String userId;
 
     /**
      * 购物车产品个数
      */
-
     private Integer basketCount;
 
     /**
      * 购物时间
      */
-
     private Date basketDate;
 
     /**
