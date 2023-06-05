@@ -48,7 +48,7 @@ public class SysLog implements Serializable {
     private Long time;
 
     /**
-     * IP地址
+     * IP地址(可以转成二进制数据进行存储)
      */
     private String ip;
 

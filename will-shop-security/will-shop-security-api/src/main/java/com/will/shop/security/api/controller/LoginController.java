@@ -39,8 +39,7 @@ public class LoginController {
 
     @PostMapping("/login")
     @Operation(summary = "账号密码(用于前端登录)", description = "通过账号/手机号/用户名密码登录，还要携带用户的类型，也就是用户所在的系统")
-    public ServerResponseEntity<TokenInfoVO> login(
-            @Valid @RequestBody AuthenticationDTO authenticationDTO) {
+    public ServerResponseEntity<TokenInfoVO> login(@Valid @RequestBody AuthenticationDTO authenticationDTO) {
         String mobileOrUserName = authenticationDTO.getUserName();
         User user = getUser(mobileOrUserName);
 

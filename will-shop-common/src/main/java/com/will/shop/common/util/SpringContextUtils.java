@@ -1,15 +1,6 @@
-/*
- * Copyright (c) 2018-2999 广州市蓝海创新科技有限公司 All rights reserved.
- *
- * https://www.mall4j.com/
- *
- * 未经允许，不可做商业用途！
- *
- * 版权所有，侵权必究！
- */
-
 package com.will.shop.common.util;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -17,15 +8,14 @@ import org.springframework.stereotype.Component;
 
 /**
  * Spring Context 工具类
- * @author lgh
+ * @author will
  */
 @Component
 public class SpringContextUtils implements ApplicationContextAware {
-	public static ApplicationContext applicationContext; 
+	public static ApplicationContext applicationContext;
 
 	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
+	public void setApplicationContext(@NotNull ApplicationContext applicationContext) throws BeansException {
 		SpringContextUtils.applicationContext = applicationContext;
 	}
 

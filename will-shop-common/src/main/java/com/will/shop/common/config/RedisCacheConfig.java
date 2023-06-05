@@ -29,6 +29,7 @@ import java.util.Map;
 
 /**
  * redis 缓存配置，仅当配置文件中spring.cache.type = redis时生效
+ *
  * @author will
  */
 @EnableCaching
@@ -41,7 +42,7 @@ public class RedisCacheConfig {
         RedisCacheManager redisCacheManager = new RedisCacheManager(
                 RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory),
                 // 默认策略，未配置的 key 会使用这个
-                this.getRedisCacheConfigurationWithTtl(3600,redisSerializer),
+                this.getRedisCacheConfigurationWithTtl(3600, redisSerializer),
                 // 指定 key 策略
                 this.getRedisCacheConfigurationMap(redisSerializer)
         );
@@ -49,13 +50,13 @@ public class RedisCacheConfig {
         return redisCacheManager;
     }
 
-    private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap(RedisSerializer<Object>  redisSerializer) {
+    private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap(RedisSerializer<Object> redisSerializer) {
         Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>(16);
         redisCacheConfigurationMap.put("product", this.getRedisCacheConfigurationWithTtl(1800, redisSerializer));
         return redisCacheConfigurationMap;
     }
 
-    private RedisCacheConfiguration getRedisCacheConfigurationWithTtl(Integer seconds,RedisSerializer<Object> redisSerializer) {
+    private RedisCacheConfiguration getRedisCacheConfigurationWithTtl(Integer seconds, RedisSerializer<Object> redisSerializer) {
 
 
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
@@ -69,7 +70,7 @@ public class RedisCacheConfig {
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory,RedisSerializer<Object> redisSerializer) {
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory, RedisSerializer<Object> redisSerializer) {
 
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
@@ -110,7 +111,7 @@ public class RedisCacheConfig {
 
 
     @Bean
-    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory){
+    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
         StringRedisTemplate redisTemplate = new StringRedisTemplate(redisConnectionFactory);
         redisTemplate.setEnableTransactionSupport(false);
         return redisTemplate;

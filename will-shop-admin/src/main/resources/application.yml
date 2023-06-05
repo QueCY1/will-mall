@@ -1,5 +1,5 @@
 server:
-  port: 8087
+  port: 8085
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/will_shops?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true

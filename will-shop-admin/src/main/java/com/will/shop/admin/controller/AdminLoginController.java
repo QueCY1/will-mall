@@ -53,14 +53,14 @@ public class AdminLoginController {
     @PostMapping("/adminLogin")
     @Operation(summary = "账号密码 + 验证码登录（用于后台登录）", description = "通过账号/手机号/用户名密码登录")
     public ServerResponseEntity<?> login(@Valid @RequestBody CaptchaAuthenticationDTO captchaAuthenticationDTO) {
-          // 登录后台管理系统需要再校验一遍验证码
-//        CaptchaVO captchaVO = new CaptchaVO();
-//        // 将前端传来DTO中的验证信息塞入captchaVO
-//        captchaVO.setCaptchaVerification(captchaAuthenticationDTO.getCaptchaVerification());
-//        ResponseModel verification = captchaService.verification(captchaVO);
-//        if (!verification.isSuccess()) {
-//            return ServerResponseEntity.showFailMsg("验证码有误或已过期");
-//        }
+        // 登录后台管理系统需要再校验一遍验证码
+        CaptchaVO captchaVO = new CaptchaVO();
+        // 将前端传来DTO中的验证信息塞入captchaVO
+        captchaVO.setCaptchaVerification(captchaAuthenticationDTO.getCaptchaVerification());
+        ResponseModel verification = captchaService.verification(captchaVO);
+        if (!verification.isSuccess()) {
+            return ServerResponseEntity.showFailMsg("验证码有误或已过期");
+        }
 
         SysUser sysUser = sysUserService.getByUserName(captchaAuthenticationDTO.getUserName());
         if (sysUser == null) {
@@ -68,8 +68,8 @@ public class AdminLoginController {
         }
 
         // 半小时内密码输入错误十次，已限制登录30分钟
-//        String decryptPassword = passwordManager.decryptPassword(captchaAuthenticationDTO.getPassWord());
-//        passwordCheckManager.checkPassword(SysTypeEnum.ADMIN,captchaAuthenticationDTO.getUserName(), decryptPassword, sysUser.getPassword());
+        String decryptPassword = passwordManager.decryptPassword(captchaAuthenticationDTO.getPassWord());
+        passwordCheckManager.checkPassword(SysTypeEnum.ADMIN, captchaAuthenticationDTO.getUserName(), decryptPassword, sysUser.getPassword());
 
         // 不是店铺超级管理员，并且是禁用状态，无法登录
         if (Objects.equals(sysUser.getStatus(), 0)) {

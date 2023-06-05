@@ -74,12 +74,16 @@ public class TokenStore {
         tokenInfoBO.setUserInfoInToken(userInfoInToken);
         tokenInfoBO.setExpiresIn(getExpiresIn(userInfoInToken.getSysType()));
 
+        //will_mall_oauth:token:uid_to_access:1:1
+        //他的值是一个集合，集合为放 accessKey 和 refreshToAccessKey
         String uidToAccessKeyStr = getUserIdToAccessKey(getApprovalKey(userInfoInToken));
+        //will_mall_oauth:token:access:6f19bdfded0e49c6b1a327df6930a5f3
         String accessKeyStr = getAccessKey(accessToken);
+        //will_mall_oauth:token:refresh_to_access:4c5ac5038ed24d48bde64ad1690ecd08
         String refreshToAccessKeyStr = getRefreshToAccessKey(refreshToken);
 
         // 一个用户会登陆很多次，每次登陆的token都会存在 uid_to_access里面
-        // 但是每次保存都会更新这个key的时间，而key里面的token有可能会过期，过期就要移除掉
+        // 但是每次保存都会更新这个key的时间，而key里面的token有可能会过期，过期就要移除掉，懒惰移除
         List<byte[]> existsAccessTokensBytes = new ArrayList<>();
         // 新的token数据
         existsAccessTokensBytes.add((accessToken + StrUtil.COLON + refreshToken).getBytes(StandardCharsets.UTF_8));
@@ -131,7 +135,7 @@ public class TokenStore {
 
     private int getExpiresIn(int sysType) {
         // 3600秒
-        int expiresIn = 3600;
+        int expiresIn = 1;
 
         // 普通用户token过期时间 1天
         if (Objects.equals(sysType, SysTypeEnum.ORDINARY.value())) {
@@ -139,7 +143,7 @@ public class TokenStore {
         }
         // 系统管理员的token过期时间 1个月
         if (Objects.equals(sysType, SysTypeEnum.ADMIN.value())) {
-            expiresIn = expiresIn * 24 * 30;
+            expiresIn = expiresIn * 24;
         }
         return expiresIn;
     }

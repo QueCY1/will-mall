@@ -8,13 +8,14 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author lh
+ * @author will
  */
 @Slf4j
 public class RedisUtil {
+
     private static RedisTemplate<String, Object> redisTemplate = SpringContextUtils.getBean("redisTemplate", RedisTemplate.class);
 
-    public static final StringRedisTemplate STRING_REDIS_TEMPLATE = SpringContextUtils.getBean("stringRedisTemplate",StringRedisTemplate.class);
+    public static final StringRedisTemplate STRING_REDIS_TEMPLATE = SpringContextUtils.getBean("stringRedisTemplate", StringRedisTemplate.class);
 
     //=============================common============================
 
